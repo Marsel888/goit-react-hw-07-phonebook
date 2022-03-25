@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/goit-react-hw-07-phonebook/static/css/main.5a367c34.css",
+    "main.js": "/goit-react-hw-07-phonebook/static/js/main.8888063b.js",
+    "static/media/leaves-background-with-metallic-foil_79603-956.jpg": "/goit-react-hw-07-phonebook/static/media/leaves-background-with-metallic-foil_79603-956.9660300f42bbe2209a1b.jpg",
+    "index.html": "/goit-react-hw-07-phonebook/index.html",
+    "main.5a367c34.css.map": "/goit-react-hw-07-phonebook/static/css/main.5a367c34.css.map",
+    "main.8888063b.js.map": "/goit-react-hw-07-phonebook/static/js/main.8888063b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a367c34.css",
+    "static/js/main.8888063b.js"
+  ]
+}
