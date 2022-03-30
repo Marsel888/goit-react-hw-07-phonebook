@@ -6,35 +6,17 @@ import Filter from './Filter/Filter'
 import ContactList from './ContactList/ContactList'
 import { useSelector } from 'react-redux'
 
-import { useGetfetchTodosQuery } from '../redux/todos/todosSlice'
+import { Oval } from 'react-loader-spinner'
 
 function App() {
-  const { data } = useGetfetchTodosQuery()
-  
-  let fil = useSelector((state) => state.user.filter)
-
-  const submitForm = ({ name, number }) => {
-    if (test(name.toLowerCase())) {
-      return alert(`${name} уже есть`)
-    }
-  }
-
-  const test = (dat) => {
-    return data?.some((item) => {
-      return item.name?.toLowerCase() === dat
-    })
-  }
-  const visibal = data?.filter((sel) => {
-    return sel.name?.toLowerCase().includes(fil?.toLowerCase())
-  })
+  let filter = useSelector((state) => state.user.filter)
 
   return (
     <>
-      <ContackForm submitForm={submitForm} />
+      <ContackForm />
+      <Filter value={filter} />
 
-      <Filter value={fil} />
-
-      <ContactList visibal={visibal} />
+      <ContactList filter={filter} />
     </>
   )
 }

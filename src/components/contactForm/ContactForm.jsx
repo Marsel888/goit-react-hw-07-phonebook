@@ -4,13 +4,28 @@ import { useState } from 'react'
 import {
   useCreateTodoMutation,
   useGetfetchTodosQuery,
-} from '../../redux/todos/todosSlice'
+  useDeleteTodoMutation,
+} from '../../redux/contact/todosSlice'
 
-function ContackForm({ submitForm, contacts }) {
+function ContackForm() {
   const [createTodo] = useCreateTodoMutation()
-  const { data } = useGetfetchTodosQuery()
+
+  let { data } = useGetfetchTodosQuery()
   const [name, setName] = useState('')
   const [number, setNumber] = useState('')
+
+  const submitForm = ({ name }) => {
+    if (test(name.toLowerCase())) {
+      return alert(`${name} уже есть`)
+    }
+    createTodo({ name: name, phone: number })
+  }
+
+  const test = (dat) => {
+    return data?.some((item) => {
+      return item.name?.toLowerCase() === dat
+    })
+  }
 
   const inputChange = (e) => {
     if (e.target.name === 'name') {
@@ -23,8 +38,8 @@ function ContackForm({ submitForm, contacts }) {
 
   const hendlerSubmit = (e) => {
     e.preventDefault()
-    submitForm({ name, number })
-    createTodo({ name: name, phone: number })
+
+    submitForm({ name })
 
     setName('')
     setNumber('')

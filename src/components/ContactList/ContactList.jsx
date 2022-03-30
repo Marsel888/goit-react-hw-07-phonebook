@@ -1,18 +1,24 @@
 import { ContactsItem, ButtonList } from '../style.styled'
-import { useDispatch } from 'react-redux'
-import { Delete } from '../../redux/slice'
-import { useDeleteTodoMutation } from '../../redux/todos/todosSlice'
 
-export default function ContactList({ visibal, click }) {
-  const [data] = useDeleteTodoMutation()
-  const dispatch = useDispatch()
+import {
+  useDeleteTodoMutation,
+  useGetfetchTodosQuery,
+} from '../../redux/contact/todosSlice'
 
+export default function ContactList({ filter }) {
+  const [dataDelete] = useDeleteTodoMutation()
+  const { data } = useGetfetchTodosQuery()
+  console.log(data)
+  const visibal = data?.filter((sel) => {
+    return sel.name?.toLowerCase().includes(filter?.toLowerCase())
+  })
+  console.log(visibal)
   return (
     <ContactsItem>
-      {visibal?.map((select) => (
-        <li key={select.id}>
-          {select.name}:{select.phone}
-          <ButtonList onClick={() => data(select.id)}>delete</ButtonList>
+      {visibal?.map(({ id, name, phone }) => (
+        <li key={id}>
+          {name}:{phone}
+          <ButtonList onClick={() => dataDelete(id)}>delete</ButtonList>
         </li>
       ))}
     </ContactsItem>

@@ -6,10 +6,10 @@ export const Myslise = createSlice({
     filter: '',
   },
   reducers: {
-    Fil(state, action) {
+    changeinput(state, action) {
       return { ...state, filter: action.payload }
     },
   },
 })
 
-export const { logIn, Delete, Fil } = Myslise.actions
+export const { changeinput } = Myslise.actions

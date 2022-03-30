@@ -1,13 +1,12 @@
 import { InputRe, LabelName } from '../style.styled'
-import { logIn, Delete, Fil } from '../../redux/slice'
+import { changeinput } from '../../redux/slice'
 import { useDispatch, useSelector } from 'react-redux'
 
 export default function Filter({ value, onChange }) {
   const dispatch = useDispatch()
   const changeFilter = (e) => {
-    dispatch(Fil(e.target.value))
+    dispatch(changeinput(e.target.value))
   }
-
 
   return (
     <LabelName>
